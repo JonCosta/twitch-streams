@@ -9,42 +9,68 @@ $(function() {
         "storbeck",
         "habathcx",
         "RobotCaleb",
-        "noobs2ninjas"
+        "noobs2ninjas",
+        "nocopyrightsounds",
+        "vgbootcamp",
+        "monstercat"
     ];
+
+    var streamers = [];
 
     getStreamers();
 
+    $(document).ajaxStop( function() {
+        $(".block__list").fadeIn();
+    });
+
     function getStreamers() {
-        let streamers = [];
         for (let i = 0; i < searchList.length; i++) {
-            streamers.push(callTwitch(searchList[i]));
+            getStreamStatus(searchList[i]);
         }
-        // Pass the array to a function that will fill the UI?
+    }
+
+    function getStreamStatus(user) {
+        $.ajax({
+            url: `https://wind-bow.glitch.me/twitch-api/streams/${user}`,
+            dataType: "jsonp",
+            success: function (data) {
+                let stream = {status: data.stream, user_name: user};
+                getStreamerData(stream);
+            }, 
+            error: function () {
+                console.log("Error searching the data");                
+            }
+        })
     }
 
     /**
      * Returns an object with data and status from the Twitch streamer
      * @param {String} user (Name of the Twitch streamer)
      */
-    function callTwitch(user) {
+    function getStreamerData(stream) {
         $.ajax({
-            url: "https://wind-bow.glitch.me/twitch-api/streams/"+user+"/",
+            url: `https://wind-bow.glitch.me/twitch-api/channels/${stream.user_name}`,
             dataType: "jsonp",
-            beforeSend: function() {
-                
-            },
             success: function(data) {
-                console.log(data);
-                return data;
+                stream.display_name = data.display_name;
+                stream.logo = data.logo;
+                stream.url = data.url;
+                printStreamer(stream);
             },
             error: function() {
                 console.log("Error searching the data");
-            },
-            complete: function() {
-
             }
+        });
+    } // endof callTwitch()
 
-        })
-    }
+    /**
+     * Builds the list of streamers that are online and/or offline
+     * @param {Array} streamers 
+     */ 
+    function printStreamer(stream) {
+        var insert = `<li>${stream.display_name}</li>`;
+        $(".block__list").append(insert);
+        
+    } // endof printStreamers()
 
 });

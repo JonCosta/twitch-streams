@@ -1,4 +1,7 @@
 body {
   background-color: #141256; }
 
+.block__list {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

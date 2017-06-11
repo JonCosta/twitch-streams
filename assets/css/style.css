@@ -1,28 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Audiowide");
+html {
+  min-height: 100%;
+  position: relative; }
+
 body {
-  background-color: #141256; }
+  background-color: #272838;
+  margin-bottom: 50px; }
 
 .block {
-  margin-top: 20px; }
-  .block .block__list {
-    display: none; }
+  background-color: #E4D9FF;
+  margin-top: 50px;
+  padding-top: 10px; }
+  .block .block__title {
+    color: #272838;
+    font-family: "Audiowide", cursive;
+    text-align: center; }
 
+.result div {
+  margin: 5px 0; }
 .result .result__online {
-  background-color: #fff; }
+  background-color: #816B9B; }
 .result .result__offline {
-  background-color: #aaa; }
+  background-color: #99978E; }
 .result .result__logo {
   border-radius: 50%;
   height: 70px;
   margin: 5px 5px;
   width: 70px; }
 .result .result__name {
-  text-align: center;
-  font-size: 20px; }
+  color: #000;
+  font-size: 20px;
+  text-align: center; }
 .result .result__status {
   color: #587694;
   font-style: italic; }
 
 .loading {
   display: none; }
+  .loading .loading__text {
+    text-align: center; }
+
+.footer {
+  background-color: #4B8F8C;
+  bottom: 0;
+  width: 100%;
+  position: absolute; }
+  .footer .footer__text {
+    color: #fff;
+    margin: 0 auto;
+    padding: 15px 15px;
+    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

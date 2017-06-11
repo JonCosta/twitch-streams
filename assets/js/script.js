@@ -114,7 +114,7 @@ $(function() {
         let insert = `
             <div class="result__${stream.status == null ? 'offline' : 'online'}">
                 <img src="${stream.logo}" class="result__logo">
-                <a href="${stream.url}" class="result__name">${stream.display_name}</a>
+                <a href="${stream.url}" class="result__name" target="_blank">${stream.display_name}</a>
                 <span class="result__status">${stream.status == null ? 'Offline' : 'Online'}</span>
             </div>`;
         // var insert = `<li class="list__item">${stream.display_name}</li>`;

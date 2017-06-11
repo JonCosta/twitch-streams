@@ -17,25 +17,70 @@ $(function() {
 
     var streamers = [];
 
-    getStreamers();
+    // getStreamers();
+
+    $(".nav__all").click(function(event) {
+        $(".nav__item").removeClass("active");
+        $(this).addClass("active");
+        event.preventDefault();
+        getStreamers();
+    });
+    
+    $(".nav__online").click(function(event) {
+        $(".nav__item").removeClass("active");
+        $(this).addClass("active");
+        event.preventDefault();
+        getStreamers("online");
+    });
+
+    $(".nav__offline").click(function(event) {
+        $(".nav__item").removeClass("active");
+        $(this).addClass("active");
+        event.preventDefault();
+        getStreamers("offline");
+    });
+
+    $(document).ajaxStart(function () {
+        $(".loading").fadeIn();
+        $(".block__list").fadeOut();        
+    })
 
     $(document).ajaxStop( function() {
+        $(".loading").fadeOut();
         $(".block__list").fadeIn();
     });
 
-    function getStreamers() {
+    function getStreamers(status = '') {
+        $(".list__item").remove();
+        searchList.sort();
         for (let i = 0; i < searchList.length; i++) {
-            getStreamStatus(searchList[i]);
+            getStreamStatus(searchList[i], status);
         }
     }
 
-    function getStreamStatus(user) {
+    function getStreamStatus(user, status = '') {
         $.ajax({
             url: `https://wind-bow.glitch.me/twitch-api/streams/${user}`,
             dataType: "jsonp",
             success: function (data) {
-                let stream = {status: data.stream, user_name: user};
-                getStreamerData(stream);
+                switch (status) {
+                    case "online":
+                        if (data.stream != null) {
+                            let stream = {status: data.stream, user_name: user};
+                            getStreamerData(stream);
+                        }
+                        break;
+                    case "offline":
+                        if (data.stream == null) {
+                            let stream = {status: data.stream, user_name: user};
+                            getStreamerData(stream);
+                        }
+                        break;
+                    default:
+                        let stream = {status: data.stream, user_name: user};
+                        getStreamerData(stream);
+                }
+                
             }, 
             error: function () {
                 console.log("Error searching the data");                
@@ -68,7 +113,7 @@ $(function() {
      * @param {Array} streamers 
      */ 
     function printStreamer(stream) {
-        var insert = `<li>${stream.display_name}</li>`;
+        var insert = `<li class="list__item">${stream.display_name}</li>`;
         $(".block__list").append(insert);
         
     } // endof printStreamers()

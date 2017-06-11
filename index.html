@@ -14,20 +14,34 @@
     <div class="container">
         <div class="jumbotron block">
             <ul class="nav nav-pills block__nav">
-                <li role="presentation" class="active">
-                    <a href="#">All</a>
+                <li role="presentation" class="nav__item nav__all active">
+                    <a href="#" class="">All</a>
                 </li>
-                <li role="presentation">
+                <li role="presentation" class="nav__item nav__online">
                     <a href="#">Online</a>    
                 </li>
-                <li role="presentation">
+                <li role="presentation" class="nav__item nav__offline">
                     <a href="#">Offline</a>
                 </li>
             </ul>
 
             <ul class="block__list"></ul>
-        </div>
-    </div>
+
+            <div class="loading">
+                <p class="loading__text"> <i class="fa fa-cog fa-spin"></i> Loading...</p>
+            </div>
+
+            <div class="result">
+                <div class="result__item">
+                    <img src="http://via.placeholder.com/60x60" alt="" class="result__logo">
+                    <h3 class="result__name"></h3>
+                    <h4 class="result__status"></h4>
+                </div>
+            </div>
+
+        </div> <!-- endof jumbotron -->
+    </div> <!-- endof container -->
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>

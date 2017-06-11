@@ -4,6 +4,27 @@ body {
     background-color: $bg-color;
 }
 
-.block__list {
+.block {
+    margin-top: 20px;
+    
+    .block__list {
+        display: none;
+    }
+}
+
+.result {
+    
+    .result__item {
+        background-color: #fff;
+    }
+    
+    .result__logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+}
+
+.loading {
     display: none;
 }

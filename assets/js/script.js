@@ -6,7 +6,6 @@ $(function() {
         "OgamingSC2",
         "cretetion",
         "freecodecamp",
-        "storbeck",
         "habathcx",
         "RobotCaleb",
         "noobs2ninjas",
@@ -15,9 +14,7 @@ $(function() {
         "monstercat"
     ];
 
-    var streamers = [];
-
-    // getStreamers();
+    getStreamers();
 
     $(".nav__all").click(function(event) {
         $(".nav__item").removeClass("active");
@@ -41,17 +38,17 @@ $(function() {
     });
 
     $(document).ajaxStart(function () {
-        $(".loading").fadeIn();
-        $(".block__list").fadeOut();        
+        $(".result").fadeOut();
     })
 
     $(document).ajaxStop( function() {
         $(".loading").fadeOut();
-        $(".block__list").fadeIn();
+        $(".result").fadeIn();
     });
 
     function getStreamers(status = '') {
-        $(".list__item").remove();
+        $(".loading").fadeIn();
+        $(".result>div").remove();
         searchList.sort();
         for (let i = 0; i < searchList.length; i++) {
             getStreamStatus(searchList[i], status);
@@ -113,8 +110,15 @@ $(function() {
      * @param {Array} streamers 
      */ 
     function printStreamer(stream) {
-        var insert = `<li class="list__item">${stream.display_name}</li>`;
-        $(".block__list").append(insert);
+        
+        let insert = `
+            <div class="result__${stream.status == null ? 'offline' : 'online'}">
+                <img src="${stream.logo}" class="result__logo">
+                <a href="${stream.url}" class="result__name">${stream.display_name}</a>
+                <span class="result__status">${stream.status == null ? 'Offline' : 'Online'}</span>
+            </div>`;
+        // var insert = `<li class="list__item">${stream.display_name}</li>`;
+        $(".result").append(insert);
         
     } // endof printStreamers()
 

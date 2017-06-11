@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
 
-$color-bg: #272838;
-$color-footer: #4B8F8C;
-$color-jumbo: #E4D9FF;
-$result-online-color: #816B9B;
-$result-offline-color: #99978E;
+$color-bg: #181924;
+$color-footer: #db5461;
+$color-jumbo: #f7f4f3;
+$color-result-online: #da9f93;
+$colo-result-offline: #ebd4cb;
 
 $font-title: 'Audiowide', cursive;
 $logo-size: 70px;
@@ -39,11 +39,11 @@ body {
     }
 
     .result__online {
-        background-color: $result-online-color;
+        background-color: $color-result-online;
     }
     
     .result__offline {
-        background-color: $result-offline-color;
+        background-color: $colo-result-offline;
     }
     
     .result__logo {

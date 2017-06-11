@@ -4,24 +4,24 @@ html {
   position: relative; }
 
 body {
-  background-color: #272838;
+  background-color: #181924;
   margin-bottom: 50px; }
 
 .block {
-  background-color: #E4D9FF;
+  background-color: #f7f4f3;
   margin-top: 50px;
   padding-top: 10px; }
   .block .block__title {
-    color: #272838;
+    color: #181924;
     font-family: "Audiowide", cursive;
     text-align: center; }
 
 .result div {
   margin: 5px 0; }
 .result .result__online {
-  background-color: #816B9B; }
+  background-color: #da9f93; }
 .result .result__offline {
-  background-color: #99978E; }
+  background-color: #ebd4cb; }
 .result .result__logo {
   border-radius: 50%;
   height: 70px;
@@ -41,7 +41,7 @@ body {
     text-align: center; }
 
 .footer {
-  background-color: #4B8F8C;
+  background-color: #db5461;
   bottom: 0;
   width: 100%;
   position: absolute; }

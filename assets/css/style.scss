@@ -71,9 +71,11 @@ body {
 
     .result__online {
         background-color: $color-result-online;
+        padding: 10px 10px;
 
         .result__name {
             color: $color-jumbo;
+            margin-top: 10px;
         }
 
         .result__status {
@@ -83,6 +85,7 @@ body {
     
     .result__offline {
         background-color: $color-result-offline;
+        padding: 10px 10px;        
     }
     
     .result__logo {
@@ -92,18 +95,23 @@ body {
         max-width: $logo-size;
     }
 
+    @media screen and (max-width: 480px) {
+        .result__logo {
+            max-height: 50px;
+            max-width: 50px;
+        }
+    }
+
     .result__name {
         color: $color-link;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: bold;
-        margin-left: 15px;
-        margin-right: 10px;
         text-align: center;
     }
 
     .result__status {
         color: $color-status;
-        font-size: 14px;
+        font-size: 18px;
         font-style: italic;
         font-weight: bold;
     }

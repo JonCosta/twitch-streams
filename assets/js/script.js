@@ -12,7 +12,9 @@ $(function() {
         "nocopyrightsounds",
         "vgbootcamp",
         "monstercat",
-        "sevens1ns"
+        "sevens1ns",
+        "brunofin",
+        "comster404"
     ];
 
     // Search for all streams when the page loads
@@ -116,10 +118,19 @@ $(function() {
             url: `https://wind-bow.glitch.me/twitch-api/channels/${stream.user_name}`,
             dataType: "jsonp",
             success: function(data) {
-                stream.display_name = data.display_name;
-                stream.logo = data.logo;
-                stream.url = data.url;
+                if (data.status == 404 || data.status == 422) {
+                    stream.display_name = "Not found";
+                    stream.logo = "http://via.placeholder.com/70x70";
+                    stream.url = "#";
+                    stream.extra = null;
+                } else { 
+                    stream.display_name = data.display_name;
+                    stream.logo = data.logo;
+                    stream.url = data.url;
+                    stream.extra = data.status;
+                }
                 printStreamer(stream);
+                
             },
             error: function() {
                 console.log("Error searching the data");
@@ -135,9 +146,17 @@ $(function() {
         
         let insert = 
             `<div class="result__${stream.status == null ? 'offline' : 'online'}">
-                <img src="${stream.logo}" class="result__logo">
-                <a href="${stream.url}" class="result__name" target="_blank">${stream.display_name}</a>
-                <span class="result__status">${stream.status == null ? 'Offline' : 'Online'}</span>
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <img src="${stream.logo}" class="media-object result__logo">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="${stream.url}" class="result__name" target="_blank">${stream.display_name}</a>
+                        </h4>
+                        <span class="result__status">${stream.status == null ? 'Offline' : stream.extra}</span>
+                    </div>
+                </div>
             </div>`;
         // var insert = `<li class="list__item">${stream.display_name}</li>`;
         $(".result").append(insert);

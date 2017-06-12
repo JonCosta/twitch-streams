@@ -1,52 +1,87 @@
-@import url("https://fonts.googleapis.com/css?family=Audiowide");
+@import url("https://fonts.googleapis.com/css?family=Audiowide|Roboto");
 html {
   min-height: 100%;
   position: relative; }
 
 body {
-  background-color: #181924;
+  background-color: #303030;
   margin-bottom: 50px; }
 
 .block {
-  background-color: #f7f4f3;
-  margin-top: 50px;
+  background-color: #f4f5f5;
+  margin-top: 30px;
   padding-top: 10px; }
   .block .block__title {
-    color: #181924;
+    color: #303030;
     font-family: "Audiowide", cursive;
     text-align: center; }
+  .block .block__nav > li.active > a,
+  .block .block__nav > li.active > a:focus,
+  .block .block__nav > li.active > a:hover {
+    background-color: #4b367c;
+    color: #f4f5f5; }
+  .block .nav__link {
+    color: #4b367c;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px; }
+  .block .nav__link:hover {
+    background-color: #9c91b7;
+    color: #f4f5f5; }
+  .block .nav__link:focus {
+    background-color: #3e2d66;
+    color: #f4f5f5; }
 
 .result div {
-  margin: 5px 0; }
+  margin: 5px 0;
+  border-radius: 5px; }
 .result .result__online {
-  background-color: #da9f93; }
+  background-color: #7c6c9f; }
+  .result .result__online .result__name {
+    color: #f4f5f5; }
+  .result .result__online .result__status {
+    color: #faa300; }
 .result .result__offline {
-  background-color: #ebd4cb; }
+  background-color: #d6d6d6; }
 .result .result__logo {
   border-radius: 50%;
-  height: 70px;
   margin: 5px 5px;
-  width: 70px; }
+  max-height: 70px;
+  max-width: 70px; }
 .result .result__name {
-  color: #000;
+  color: #453271;
   font-size: 20px;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-right: 10px;
   text-align: center; }
 .result .result__status {
   color: #587694;
-  font-style: italic; }
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold; }
+
+.not-found {
+  display: none; }
+  .not-found h2 {
+    text-align: center; }
 
 .loading {
-  display: none; }
+  display: none;
+  padding: 20px 20px; }
   .loading .loading__text {
+    color: #f4f5f5;
+    font-family: "Audiowide", cursive;
+    font-size: 30px;
     text-align: center; }
 
 .footer {
-  background-color: #db5461;
+  background-color: #cf5c53;
   bottom: 0;
   width: 100%;
   position: absolute; }
   .footer .footer__text {
-    color: #fff;
+    color: #f4f5f5;
     margin: 0 auto;
     padding: 15px 15px;
     text-align: center; }

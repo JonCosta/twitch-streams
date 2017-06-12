@@ -11,42 +11,59 @@ $(function() {
         "noobs2ninjas",
         "nocopyrightsounds",
         "vgbootcamp",
-        "monstercat"
+        "monstercat",
+        "sevens1ns"
     ];
 
+    // Search for all streams when the page loads
     getStreamers();
 
+    // Nav -> Button to show all streams of the list
     $(".nav__all").click(function(event) {
+        event.preventDefault();
+        if ($(this).hasClass("active"))
+            return false;
         $(".nav__item").removeClass("active");
         $(this).addClass("active");
-        event.preventDefault();
         getStreamers();
     });
     
+    // Nav -> Button to show all ONLINE streams
     $(".nav__online").click(function(event) {
+        event.preventDefault();
+        if ($(this).hasClass("active"))
+            return false;
         $(".nav__item").removeClass("active");
         $(this).addClass("active");
-        event.preventDefault();
         getStreamers("online");
     });
 
+    // Nav -> Button to show all OFFLINE streams
     $(".nav__offline").click(function(event) {
+        event.preventDefault();
+        if ($(this).hasClass("active"))
+            return false;
         $(".nav__item").removeClass("active");
         $(this).addClass("active");
-        event.preventDefault();
         getStreamers("offline");
     });
 
-    $(document).ajaxStart(function () {
-        $(".result").fadeOut();
-    })
-
+    // When all ajax calls are done, hide the Loading section and reveal the Result section
     $(document).ajaxStop( function() {
         $(".loading").fadeOut();
         $(".result").fadeIn();
+        if ($(".result").html() == '') {
+            $(".not-found").fadeIn();
+        }
     });
 
+    /**
+     * Runs through the search list and runs the ajax function for each
+     * @param {String} status 
+     */ 
     function getStreamers(status = '') {
+        $(".result").fadeOut();
+        $(".not-found").fadeOut();
         $(".loading").fadeIn();
         $(".result>div").remove();
         searchList.sort();
@@ -55,6 +72,11 @@ $(function() {
         }
     }
 
+    /**
+     * Accesses Twitch API and collects data of their streams (online or not)
+     * @param {String} user (Username of the desired streamer)
+     * @param {String} status (Whether the stream must be online or not. Defaults to select both)
+     */
     function getStreamStatus(user, status = '') {
         $.ajax({
             url: `https://wind-bow.glitch.me/twitch-api/streams/${user}`,
@@ -107,12 +129,12 @@ $(function() {
 
     /**
      * Builds the list of streamers that are online and/or offline
-     * @param {Array} streamers 
+     * @param {Object} stream (Stream object with all the info of the streamer)
      */ 
     function printStreamer(stream) {
         
-        let insert = `
-            <div class="result__${stream.status == null ? 'offline' : 'online'}">
+        let insert = 
+            `<div class="result__${stream.status == null ? 'offline' : 'online'}">
                 <img src="${stream.logo}" class="result__logo">
                 <a href="${stream.url}" class="result__name" target="_blank">${stream.display_name}</a>
                 <span class="result__status">${stream.status == null ? 'Offline' : 'Online'}</span>

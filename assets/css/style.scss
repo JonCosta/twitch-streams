@@ -1,12 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Audiowide');
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Roboto');
 
-$color-bg: #181924;
-$color-footer: #db5461;
-$color-jumbo: #f7f4f3;
-$color-result-online: #da9f93;
-$colo-result-offline: #ebd4cb;
-
+// Color variables
+$color-bg: #303030;
+$color-footer: #cf5c53;
+$color-jumbo: #f4f5f5;
+$color-link: #453271;
+$color-nav: #4b367c;
+$color-result-online: #7c6c9f;
+$color-result-offline: #d6d6d6;
+$color-status: #587694;
+$color-status-on: #faa300;
+// Other variables
 $font-title: 'Audiowide', cursive;
+$font-text: 'Roboto', cursive;
 $logo-size: 70px;
 
 html {
@@ -19,9 +25,10 @@ body {
     margin-bottom: 50px;
 }
 
+// BLOCK (Jumbotron) Section ----------/
 .block {
     background-color: $color-jumbo;
-    margin-top: 50px;
+    margin-top: 30px;
     padding-top: 10px;
     
     .block__title {
@@ -30,49 +37,100 @@ body {
         text-align: center;
     }
 
+    .block__nav>li.active>a, 
+    .block__nav>li.active>a:focus, 
+    .block__nav>li.active>a:hover {
+        background-color: $color-nav;
+        color: $color-jumbo;
+    }
+
+    .nav__link {
+        color: $color-nav;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px 20px;        
+    }
+    .nav__link:hover {
+        background-color: #9c91b7;
+        color: $color-jumbo;
+    }
+    .nav__link:focus {
+        background-color: #3e2d66;   
+        color: $color-jumbo;     
+    }
+
 }
 
+// RESULT Section ----------/
 .result {
 
     div {
         margin: 5px 0;
+        border-radius: 5px;
     }
 
     .result__online {
         background-color: $color-result-online;
+
+        .result__name {
+            color: $color-jumbo;
+        }
+
+        .result__status {
+            color: $color-status-on;
+        }
     }
     
     .result__offline {
-        background-color: $colo-result-offline;
+        background-color: $color-result-offline;
     }
     
     .result__logo {
         border-radius: 50%;
-        height: $logo-size;
         margin: 5px 5px;
-        width: $logo-size;
+        max-height: $logo-size;
+        max-width: $logo-size;
     }
 
     .result__name {
-        color: #000;
+        color: $color-link;
         font-size: 20px;
+        font-weight: bold;
+        margin-left: 15px;
+        margin-right: 10px;
         text-align: center;
     }
 
     .result__status {
-        color: #587694;
+        color: $color-status;
+        font-size: 14px;
         font-style: italic;
+        font-weight: bold;
     }
 }
 
-.loading {
+.not-found {
     display: none;
 
-    .loading__text {
+    h2 {
         text-align: center;
     }
 }
 
+// LOADING Section ----------/
+.loading {
+    display: none;
+    padding: 20px 20px;
+
+    .loading__text {
+        color: $color-jumbo;
+        font-family: $font-title;
+        font-size: 30px;
+        text-align: center;
+    }
+}
+
+// FOOTER Section ----------/
 .footer {
     background-color: $color-footer;
     bottom: 0;
@@ -80,7 +138,7 @@ body {
     position: absolute;
 
     .footer__text {
-        color: #fff;
+        color: $color-jumbo;
         margin: 0 auto;
         padding: 15px 15px;
         text-align: center;

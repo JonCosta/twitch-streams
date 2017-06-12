@@ -9,7 +9,7 @@ $color-nav: #4b367c;
 $color-result-online: #7c6c9f;
 $color-result-offline: #d6d6d6;
 $color-status: #587694;
-$color-status-on: #faa300;
+$color-status-on: #b4c564;
 // Other variables
 $font-title: 'Audiowide', cursive;
 $font-text: 'Roboto', cursive;
@@ -72,14 +72,15 @@ body {
     .result__online {
         background-color: $color-result-online;
         padding: 10px 10px;
-
+        
         .result__name {
-            color: $color-jumbo;
+            color: $color-status-on;
             margin-top: 10px;
         }
 
+        .result__game,        
         .result__status {
-            color: $color-status-on;
+            color: $color-jumbo;
         }
     }
     
@@ -107,6 +108,17 @@ body {
         font-size: 25px;
         font-weight: bold;
         text-align: center;
+    }
+
+    .result__game {
+        color: $color-jumbo;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 3px;
+
+        i {
+            color: $color-status-on;
+        }
     }
 
     .result__status {

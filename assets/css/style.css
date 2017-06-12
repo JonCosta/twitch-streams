@@ -39,10 +39,11 @@ body {
   background-color: #7c6c9f;
   padding: 10px 10px; }
   .result .result__online .result__name {
-    color: #f4f5f5;
+    color: #b4c564;
     margin-top: 10px; }
+  .result .result__online .result__game,
   .result .result__online .result__status {
-    color: #faa300; }
+    color: #f4f5f5; }
 .result .result__offline {
   background-color: #d6d6d6;
   padding: 10px 10px; }
@@ -60,6 +61,13 @@ body {
   font-size: 25px;
   font-weight: bold;
   text-align: center; }
+.result .result__game {
+  color: #f4f5f5;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 3px; }
+  .result .result__game i {
+    color: #b4c564; }
 .result .result__status {
   color: #587694;
   font-size: 18px;

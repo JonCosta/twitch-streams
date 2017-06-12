@@ -123,11 +123,13 @@ $(function() {
                     stream.logo = "http://via.placeholder.com/70x70";
                     stream.url = "#";
                     stream.extra = null;
+                    stream.game = null;
                 } else { 
                     stream.display_name = data.display_name;
                     stream.logo = data.logo;
                     stream.url = data.url;
                     stream.extra = data.status;
+                    stream.game = data.game;
                 }
                 printStreamer(stream);
                 
@@ -154,7 +156,8 @@ $(function() {
                         <h4 class="media-heading">
                             <a href="${stream.url}" class="result__name" target="_blank">${stream.display_name}</a>
                         </h4>
-                        <span class="result__status">${stream.status == null ? 'Offline' : stream.extra}</span>
+                        ${stream.status == null ? '' : '<span class="result__game">Playing: <i>'+stream.game+'</i></span><br>'}
+                        <span class="result__status">${stream.status == null ? 'Offline' : '"'+stream.extra+'"'}</span>
                     </div>
                 </div>
             </div>`;

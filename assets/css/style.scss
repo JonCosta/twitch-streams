@@ -7,9 +7,9 @@ $color-jumbo: #f4f5f5;
 $color-link: #453271;
 $color-nav: #4b367c;
 $color-result-online: #7c6c9f;
-$color-result-offline: #d6d6d6;
+$color-result-offline: #C3C3C3;
 $color-status: #587694;
-$color-status-on: #b4c564;
+$color-status-on: #FFE787;
 // Other variables
 $font-title: 'Audiowide', cursive;
 $font-text: 'Roboto', cursive;
@@ -48,12 +48,21 @@ body {
         color: $color-nav;
         font-size: 20px;
         font-weight: bold;
-        padding: 10px 20px;        
+        padding: 10px 20px;
     }
+
+    @media screen and (max-width: 480px) {
+        .nav__link {
+            padding: 5px 10px;
+            font-size: 15px;
+        }
+    }
+
     .nav__link:hover {
         background-color: #9c91b7;
         color: $color-jumbo;
     }
+    
     .nav__link:focus {
         background-color: #3e2d66;   
         color: $color-jumbo;     
@@ -88,6 +97,10 @@ body {
         background-color: $color-result-offline;
         padding: 10px 10px;        
     }
+
+    .result__thumb {
+        background-color: #453271;
+    }
     
     .result__logo {
         border-radius: 50%;
@@ -96,18 +109,22 @@ body {
         max-width: $logo-size;
     }
 
-    @media screen and (max-width: 480px) {
-        .result__logo {
-            max-height: 50px;
-            max-width: 50px;
-        }
-    }
-
     .result__name {
         color: $color-link;
         font-size: 25px;
         font-weight: bold;
         text-align: center;
+    }
+    
+    @media screen and (max-width: 480px) {
+        .result__logo {
+            max-height: 50px;
+            max-width: 50px;
+        }
+
+        .result__name {
+            font-size: 18px;
+        }
     }
 
     .result__game {
@@ -126,6 +143,15 @@ body {
         font-size: 18px;
         font-style: italic;
         font-weight: bold;
+    }
+
+    @media screen and (max-width: 480px) {
+        .result__game {
+            font-size: 14px;
+        }
+        .result__status {
+            font-size: 14px;
+        }
     }
 }
 

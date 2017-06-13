@@ -25,6 +25,10 @@ body {
     font-size: 20px;
     font-weight: bold;
     padding: 10px 20px; }
+  @media screen and (max-width: 480px) {
+    .block .nav__link {
+      padding: 5px 10px;
+      font-size: 15px; } }
   .block .nav__link:hover {
     background-color: #9c91b7;
     color: #f4f5f5; }
@@ -39,40 +43,49 @@ body {
   background-color: #7c6c9f;
   padding: 10px 10px; }
   .result .result__online .result__name {
-    color: #b4c564;
+    color: #FFE787;
     margin-top: 10px; }
   .result .result__online .result__game,
   .result .result__online .result__status {
     color: #f4f5f5; }
 .result .result__offline {
-  background-color: #d6d6d6;
+  background-color: #C3C3C3;
   padding: 10px 10px; }
+.result .result__thumb {
+  background-color: #453271; }
 .result .result__logo {
   border-radius: 50%;
   margin: 5px 5px;
   max-height: 70px;
   max-width: 70px; }
-@media screen and (max-width: 480px) {
-  .result .result__logo {
-    max-height: 50px;
-    max-width: 50px; } }
 .result .result__name {
   color: #453271;
   font-size: 25px;
   font-weight: bold;
   text-align: center; }
+@media screen and (max-width: 480px) {
+  .result .result__logo {
+    max-height: 50px;
+    max-width: 50px; }
+  .result .result__name {
+    font-size: 18px; } }
 .result .result__game {
   color: #f4f5f5;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 3px; }
   .result .result__game i {
-    color: #b4c564; }
+    color: #FFE787; }
 .result .result__status {
   color: #587694;
   font-size: 18px;
   font-style: italic;
   font-weight: bold; }
+@media screen and (max-width: 480px) {
+  .result .result__game {
+    font-size: 14px; }
+  .result .result__status {
+    font-size: 14px; } }
 
 .not-found {
   display: none; }

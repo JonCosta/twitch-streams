@@ -119,10 +119,10 @@ $(function() {
             dataType: "jsonp",
             success: function(data) {
                 if (data.status == 404 || data.status == 422) {
-                    stream.display_name = "Not found";
-                    stream.logo = "http://via.placeholder.com/70x70";
+                    stream.display_name = stream.user_name;
+                    stream.logo = "http://via.placeholder.com/70x70/453271/453271";
                     stream.url = "#";
-                    stream.extra = null;
+                    stream.extra = "This user doesn't exist or has no account anymore.";
                     stream.game = null;
                 } else { 
                     stream.display_name = data.display_name;
@@ -150,14 +150,17 @@ $(function() {
             `<div class="result__${stream.status == null ? 'offline' : 'online'}">
                 <div class="media">
                     <div class="media-left media-middle">
+                        <a href="${stream.url}" target=${stream.url == "#" ? "" : "_blank"}>
                         <img src="${stream.logo}" class="media-object result__logo">
+                        </a>
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="${stream.url}" class="result__name" target="_blank">${stream.display_name}</a>
+                            <a href="${stream.url}" class="result__name" target=${stream.url == "#" ? "" : "_blank"}>${stream.display_name}</a>
                         </h4>
                         ${stream.status == null ? '' : '<span class="result__game">Playing: <i>'+stream.game+'</i></span><br>'}
-                        <span class="result__status">${stream.status == null ? 'Offline' : '"'+stream.extra+'"'}</span>
+                        ${stream.url != "#" ? '' : '<span class="result__status">'+stream.extra+'</span><br>'}
+                        <span class="result__status">${stream.status == null ? '- Offline' : '"'+stream.extra+'"'}</span>
                     </div>
                 </div>
             </div>`;
